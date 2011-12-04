@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import unittest
 
 class URLMapperTests(unittest.TestCase):
@@ -150,7 +151,7 @@ class URLDispatcherTests(unittest.TestCase):
         def start_response(status, headers):
             called.append((status, headers))
         result = target(environ, start_response)
-        self.assertEqual(result, ["Not found"])
+        self.assertEqual(result, [b"Not found"])
         
 
     def test_add_url(self):
@@ -287,7 +288,7 @@ class MethodDispatcherTests(unittest.TestCase):
         environ = self._setup_environ(REQUEST_METHOD='POST')
         start_response = DummyStartResponse()
         result = app(environ, start_response)
-        self.assertEqual(result, ["Method Not Allowed"])
+        self.assertEqual(result, [b"Method Not Allowed"])
         self.assertEqual(start_response.status, '405 Method Not Allowed')
 
 class ActionDispatcherTests(unittest.TestCase):
@@ -322,7 +323,7 @@ class ActionDispatcherTests(unittest.TestCase):
         start_response = DummyStartResponse()
         result = app(environ, start_response)
         self.assertEqual(start_response.status, '404 Not Found')
-        self.assertEqual(result, ["Not Found http://127.0.0.1/"])
+        self.assertEqual(result, [b"Not Found"])
 
 class URLMapperMixinTests(unittest.TestCase):
     def _getTarget(self):
