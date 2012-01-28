@@ -1,7 +1,7 @@
 WebDispatch
 ============================
 
-WebDispatch is dispatcher collection for wsgi application. 
+WebDispatch is dispatcher collection for wsgi application.
 That has no dependency to exsiting frameworks, but works fine with `WebOb <http://www.webob.org>`_.
 
 Dispatch and Generate URL
